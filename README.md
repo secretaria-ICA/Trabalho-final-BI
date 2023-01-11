@@ -1,8 +1,8 @@
 <!-- antes de enviar a versão final, solicitamos que todos os comentários, colocados para orientação ao aluno, sejam removidos do arquivo -->
 # Estimativa de geração de energia fotovoltaica a partir da classificação de imagens celeste e Rede Neural Convolucional
 
-#### Aluno: Leonardo Sondermann Christianes(https://github.com/link_do_github)
-#### Orientadora: Evelyn Batista(https://github.com/link_do_github) 
+#### Aluno: Leonardo Sondermann Christianes
+#### Orientadora: Evelyn Batista
 
 ---
 
@@ -138,20 +138,20 @@ Na figura 6 mostra uma precisão de 99,87%, na validação das imagem, já na fi
 
 ![alt text](./figuras/Figure_1a.png) ![alt text](./figuras/matrix.png) 
 
-![alt text](./figuras/Tabela1.png)
+![alt text](./figuras/Tabala1.PNG)
 
 ### 7. Resultados finais
 
 Inicialmente foi feita uma estatística obtendo media, mediana, valor superior, inferior e Coeficiente de variação  da potencia geração para cada grupo do dataset, como mostrado na tabela 1. Com os valos, foi construído uma gráfico boxplot para uma melhor visualização da distribuição dos dados e seus valores discrepantes (outliers)  da potência medida em PU. Para análise estatística, foram removidos dados faltantes e medições inconsistentes como uma geração próxima de 0 em condições de céu limpo (figura 3), por exemplo.
 
 
-![alt text](./figuras/Tabela2.png)
+![alt text](./figuras/Tabela2.PNG)
 
 ![alt text](./figuras/boxplot.jpg)
 
 Na sequência, foram escolhidas 5 novas imagem aleatórias para validar a rede treinada e comparar a medição da potência registrada da imagem com os valos presentes no gráfico Boxplot. E possível observar na tabela 2 que as 5 amostras foram classificadas corretamente, apenas as imagem de numero 1 e 2 ficaram com os valores de potencia fora da faixa de concentração do gráfico boxplot. Isso mostra que é possível realizar um estimativa, mesmo que não tão precisa, da geração a partir da classificação da imagem feita pela rede. 
 
-![alt text](./figuras/Tabela3.png)
+![alt text](./figuras/Tabela3.PNG)
 
 ### 8. Conclusões
 
