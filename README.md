@@ -99,15 +99,15 @@ Redes neurais têm sido usadas para Classificação há mais de 20 anos, alcanç
 
 A CNN é instanciada pela classe Sequential (biblioteca Keras) que permite criar uma modelo camadas por camadas. Basicamente, definimos a convolução, ativação, polling, Flatten, Dense e Dropout. Na figura 1, mostra a estrutura simplificada das camadas utilizadas para o treinamento da rede CNN 
 
-![alt text](./readme_images/struct.png)
+![alt text](./figuras/struct.png)
 
 O fluxograma abaixo ilustra a arquitetura das camadas utilizadas no modelo.
 
-
+![alt text](./figuras/DiagramaCNN.png)
 
 As primeiras camadas são chamadas Convoluções. Estas são camadas de convolução que lidam com as imagens de entrada, que são vistas como matrizes bidimensionais.
 
-Foi utilizado 2 blocos da rede convolucional, onde são definimos a convolução, ativação, polling e o dropout. No primeiro bloco, temos uma camada convolucional de 32 nós, e no segundo bloco uma convolução com 64 nós, ambas com kernel de 3x3 seguidas de uma ativação RELU ou Ativação Linear Retificada, esta função de ativação provou funcionar bem em redes neurais \cite{guo2016deep}, e polling de tamanho 2x2 como descrito por \cite{fukushima1980neocognitron}, que tem como principal objetivo diminuir a sensibilidade da rede com relação a pequenas alterações na imagem. Ela consegue esse feito combinando as diferentes características de uma região em uma única característica ou padrão. Diminuindo a redundância da rede. Por fim, para fechar cada bloco, uma camada dropout de 0.5, para desligar randomicamente neurônios para evitar overfitting.
+Foi utilizado 2 blocos da rede convolucional, onde são definimos a convolução, ativação, polling e o dropout. No primeiro bloco, temos uma camada convolucional de 32 nós, e no segundo bloco uma convolução com 64 nós, ambas com kernel de 3x3 seguidas de uma ativação RELU ou Ativação Linear Retificada, esta função de ativação provou funcionar bem em redes neurais  [1], e polling de tamanho 2x2 como descrito por [6], que tem como principal objetivo diminuir a sensibilidade da rede com relação a pequenas alterações na imagem. Ela consegue esse feito combinando as diferentes características de uma região em uma única característica ou padrão. Diminuindo a redundância da rede. Por fim, para fechar cada bloco, uma camada dropout de 0.5, para desligar randomicamente neurônios para evitar overfitting.
 
 Apos o ultimo bloco de conjunto de camadas, foi usado a camada Flatten, que serve como uma conexão entre a convolução e a camada Fully-Connected (FC) chamada dense, ou seja, dense é o tipo de camada utilizada para a saída de tamanho 3, que é exatamente o número de classes do problema.
 
@@ -116,11 +116,13 @@ Tendo a estrutura de camadas criada, é então instanciada a método fit() da bi
 
 ### 5. Criação do Dataset
 
-Inicialmente foi criando um banco de dados de uma amostra de aproximadamente 3000 mil imagens do céu de tamanho 480x640 pixels e um campo de visão de 180\° para compor o Dataset.
+Inicialmente foi criando um banco de dados de uma amostra de aproximadamente 3000 mil imagens do céu de tamanho 480x640 pixels e um campo de visão de 180° para compor o Dataset.
  A aquisição de energia, o painel PV tinha um circuito conectado a dois pinos analógicos na placa Arduino. Um pino mediria a voltagem de toda a carga e o outro, a voltagem em uma pequena resistência, inferindo então a corrente gerada.
  
- O conjunto de dados foi gravada durante um período 12 dias corridos entre 11 h as 17 h, medindo tensão,corrente e temperatura a cada 50 segundo para cada imagem desse período. Mais detalhes sobre este conjunto de dados pode ser encontrado em \cite{Clouddetection2016}. Em seguida, foi feita uma classificação manual das imagem entre as 3 condições climáticas para treinamento da rede: céu nublado; céu parcialmente  nublado e  céu  limpo.  As figuras \ref{ a}, \ref{ b}, \ref{ c} mostram as
+ O conjunto de dados foi gravada durante um período 12 dias corridos entre 11 h as 17 h, medindo tensão,corrente e temperatura a cada 50 segundo para cada imagem desse período. Mais detalhes sobre este conjunto de dados pode ser encontrado em [7]. Em seguida, foi feita uma classificação manual das imagem entre as 3 condições climáticas para treinamento da rede: céu nublado; céu parcialmente  nublado e  céu  limpo.  As figuras 3,4,5 mostram as
 amostra das três imagens do céu que correspondem a diferentes condições climáticas.
+
+![alt text](./figuras/limpo.jpg) ![alt text](./figuras/parcial.jpg) ![alt text](./figuras/nublado.jpg)
 
 
 Um conjunto de amostras de imagens usados pra treinamento e testes em uma rede neural deve ser composto por grupo ou classes com um número consideravelmente  grande  para  que  a  rede neural seja capaz de aprender e, portanto, ter uma maior precisão de classificação.
@@ -128,22 +130,33 @@ Um conjunto de amostras de imagens usados pra treinamento e testes em uma rede n
 ### 6. Treinamento e resultados
 
 O treinamento da rede foi realizado através um IntelR CoreT m CPU i5 750 com tempo  médio de 289 segundos por época.
-Para o treinamento foi utilizado o dataset que possui um conjunto de imagens separadas em 3 classes, a partir do qual 75\% do total servem como um conjunto de treino e as imagens do céu restantes como um conjunto de testes, a seleção das imagens é feita de forma aleatória.
+Para o treinamento foi utilizado o dataset que possui um conjunto de imagens separadas em 3 classes, a partir do qual 75% do total servem como um conjunto de treino e as imagens do céu restantes como um conjunto de testes, a seleção das imagens é feita de forma aleatória.
 Em seguida, foi reformular a  entradas de conjunto de dados em 2 variáveis  
 X\_train e Y\_train para treinamento, X\_test e Y\_test para teste, para ser processado no conjunto de camadas detalhado na seção anterior.
 
-Na figura \ref{pre} mostra uma precisão de 99,87\%, na validação das imagem, já na figura \ref{teste} pode observar que apenas 6 imagens fora classificadas de forma incorreta pela rede. A tabela \ref{tab:table} mostras a precisão e o numero total de imagem por grupo, foi observado que a rede teve uma maior dificuldade em classificar imagens de clima parcialmente nublado (Figura \ref{ b} ) que foram classificadas como nubladas (Figura \ref{ c} ). Vale ressaltar que a precisão da classificação pode ter sido degrada por falha na construção do dataset, já que o mesmo foi feita de forma manual e algumas imagens podem ter sido agrupada de forma equivocadas.
+Na figura 6 mostra uma precisão de 99,87%, na validação das imagem, já na figura 7 pode observar que apenas 6 imagens fora classificadas de forma incorreta pela rede. A tabela \ref{tab:table} mostras a precisão e o numero total de imagem por grupo, foi observado que a rede teve uma maior dificuldade em classificar imagens de clima parcialmente nublado (Figura 4  que foram classificadas como nubladas (Figura 5). Vale ressaltar que a precisão da classificação pode ter sido degrada por falha na construção do dataset, já que o mesmo foi feita de forma manual e algumas imagens podem ter sido agrupada de forma equivocadas.
+
+![alt text](./figuras/Figure_1a.png) ![alt text](./figuras/matrix.png) 
+
+![alt text](./figuras/Tabela1.png)
 
 ### 7. Resultados finais
 
-Inicialmente foi feita uma estatística obtendo media, mediana, valor superior, inferior e Coeficiente de variação  da potencia geração para cada grupo do dataset, como mostrado na tabela \ref{media}. Com os valos, foi construído uma gráfico boxplot para uma melhor visualização da distribuição dos dados e seus valores discrepantes (outliers)  da potência medida em PU. Para análise estatística, foram removidos dados faltantes e medições inconsistentes como uma geração próxima de 0 em condições de céu limpo (figura \ref{ a}), por exemplo.
+Inicialmente foi feita uma estatística obtendo media, mediana, valor superior, inferior e Coeficiente de variação  da potencia geração para cada grupo do dataset, como mostrado na tabela 1. Com os valos, foi construído uma gráfico boxplot para uma melhor visualização da distribuição dos dados e seus valores discrepantes (outliers)  da potência medida em PU. Para análise estatística, foram removidos dados faltantes e medições inconsistentes como uma geração próxima de 0 em condições de céu limpo (figura 3), por exemplo.
 
-Na sequência, foram escolhidas 5 novas imagem aleatórias para validar a rede treinada e comparar a medição da potência registrada da imagem com os valos presentes no gráfico Boxplot. E possível observar na tabela \ref{tab:table2} que as 5 amostras foram classificadas corretamente, apenas as imagem de numero 1 e 2 ficaram com os valores de potencia fora da faixa de concentração do gráfico boxplot. Isso mostra que é possível realizar um estimativa, mesmo que não tão precisa, da geração a partir da classificação da imagem feita pela rede. 
+
+![alt text](./figuras/Tabela2.png)
+
+![alt text](./figuras/boxplot.jpg)
+
+Na sequência, foram escolhidas 5 novas imagem aleatórias para validar a rede treinada e comparar a medição da potência registrada da imagem com os valos presentes no gráfico Boxplot. E possível observar na tabela 2 que as 5 amostras foram classificadas corretamente, apenas as imagem de numero 1 e 2 ficaram com os valores de potencia fora da faixa de concentração do gráfico boxplot. Isso mostra que é possível realizar um estimativa, mesmo que não tão precisa, da geração a partir da classificação da imagem feita pela rede. 
+
+![alt text](./figuras/Tabela3.png)
 
 ### 8. Conclusões
 
 Neste trabalho foi mostrado um algoritmo para classificar imagens do céu em 3 condições climáticas, com base na superfície terrestre.
-Foi demonstrado que um classificador de rede neural convolutiva (CNN) utilizando a biblioteca Keras e tensorflow, foi capaz de realizar a classificação com uma  precisão de 99,87\%, até em condições rotulados como difícil onde existem nuvens em torno do sol ou nuvens muito escuras, e em condições totalmente nubladas e sem nuvens. Sendo assim, o algoritmo tem a capacidade de distinguir bem entres essas 3 diferentes condições de céu.
+Foi demonstrado que um classificador de rede neural convolutiva (CNN) utilizando a biblioteca Keras e tensorflow, foi capaz de realizar a classificação com uma  precisão de 99,87%, até em condições rotulados como difícil onde existem nuvens em torno do sol ou nuvens muito escuras, e em condições totalmente nubladas e sem nuvens. Sendo assim, o algoritmo tem a capacidade de distinguir bem entres essas 3 diferentes condições de céu.
 
 Com esta rede treinada foi possível classificar novas imagens e realizar uma validação e estimativa de potência, através de uma estatística da potência gerada pelo gráfico de boxplot, que contem as faixas de potencia para cada classe ou condição climática.
 
