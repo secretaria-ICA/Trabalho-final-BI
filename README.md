@@ -8,6 +8,8 @@
 
 Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como pré-requisito para conclusão de curso e obtenção de crédito na disciplina "Projetos de Sistemas Inteligentes de Apoio à Decisão".
 
+- [Link para o código](https://github.com/leosonder/Trabalho-final-BI.git)
+- [Link para o Dataset](https://drive.google.com/file/d/1WQV3dYmvrYD6fzExJvCjf1wenFJQ0KuY/view?usp=share_link)
 ---
 
 ### Resumo
