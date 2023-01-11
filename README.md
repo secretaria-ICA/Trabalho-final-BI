@@ -121,6 +121,7 @@ Inicialmente foi criando um banco de dados de uma amostra de aproximadamente 300
  
  O conjunto de dados foi gravada durante um período 12 dias corridos entre 11 h as 17 h, medindo tensão,corrente e temperatura a cada 50 segundo para cada imagem desse período. Mais detalhes sobre este conjunto de dados pode ser encontrado em [7]. Em seguida, foi feita uma classificação manual das imagem entre as 3 condições climáticas para treinamento da rede: céu nublado; céu parcialmente  nublado e  céu  limpo.  As figuras 3,4,5 mostram as
 amostra das três imagens do céu que correspondem a diferentes condições climáticas.
+O Dataset usando poder ser baixo pelo link (https://drive.google.com/file/d/1WQV3dYmvrYD6fzExJvCjf1wenFJQ0KuY/view?usp=share_link)
 
 ![alt text](./figuras/limpo.jpg) ![alt text](./figuras/parcial.jpg) ![alt text](./figuras/nublado.jpg)
 
