@@ -101,11 +101,11 @@ Redes neurais têm sido usadas para Classificação há mais de 20 anos, alcanç
 
 A CNN é instanciada pela classe Sequential (biblioteca Keras) que permite criar uma modelo camadas por camadas. Basicamente, definimos a convolução, ativação, polling, Flatten, Dense e Dropout. Na figura 1, mostra a estrutura simplificada das camadas utilizadas para o treinamento da rede CNN 
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/struct.png)
+![struct](https://user-images.githubusercontent.com/60608757/212551537-66eda89e-7bbb-413f-a95a-1b02c53d31e6.png)
 
 O fluxograma abaixo ilustra a arquitetura das camadas utilizadas no modelo.
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/DiagramaCNN.png)
+![DiagramaCNN](https://user-images.githubusercontent.com/60608757/212551524-d26c08c2-4085-48c7-a453-437792769c42.png)
 
 As primeiras camadas são chamadas Convoluções. Estas são camadas de convolução que lidam com as imagens de entrada, que são vistas como matrizes bidimensionais.
 
@@ -125,7 +125,7 @@ Inicialmente foi criando um banco de dados de uma amostra de aproximadamente 300
 amostra das três imagens do céu que correspondem a diferentes condições climáticas.
 O Dataset usando poder ser baixo pelo link (https://drive.google.com/file/d/1WQV3dYmvrYD6fzExJvCjf1wenFJQ0KuY/view?usp=share_link)
 
-![Limpo](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/limpo.jpg) ![Nublado](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/parcial.jpg) ![Parcialmente nublado](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/nublado.jpg)
+![limpo](https://user-images.githubusercontent.com/60608757/212551529-1b49ab93-0659-4daa-aa23-898117f1218e.jpg) ![parcial](https://user-images.githubusercontent.com/60608757/212551535-993f9e0a-6087-4874-a3ac-cdbbc9494056.jpg) ![nublado](https://user-images.githubusercontent.com/60608757/212551534-e16ca17f-c856-4d28-9103-89db8249080d.jpg)
 
 
 Um conjunto de amostras de imagens usados pra treinamento e testes em uma rede neural deve ser composto por grupo ou classes com um número consideravelmente  grande  para  que  a  rede neural seja capaz de aprender e, portanto, ter uma maior precisão de classificação.
@@ -139,22 +139,22 @@ X\_train e Y\_train para treinamento, X\_test e Y\_test para teste, para ser pro
 
 Na figura 6 mostra uma precisão de 99,87%, na validação das imagem, já na figura 7 pode observar que apenas 6 imagens fora classificadas de forma incorreta pela rede. A tabela \ref{tab:table} mostras a precisão e o numero total de imagem por grupo, foi observado que a rede teve uma maior dificuldade em classificar imagens de clima parcialmente nublado (Figura 4  que foram classificadas como nubladas (Figura 5). Vale ressaltar que a precisão da classificação pode ter sido degrada por falha na construção do dataset, já que o mesmo foi feita de forma manual e algumas imagens podem ter sido agrupada de forma equivocadas.
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/matrix.png) 
+![matrix](https://user-images.githubusercontent.com/60608757/212551533-165561ce-dff4-4a0f-ba06-e6d48c401dda.png)
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/Tabala1.PNG)
+![Tabala1](https://user-images.githubusercontent.com/60608757/212551539-640e2adb-2d7d-49fc-8f95-1d3e58fa9aec.PNG)
 
 ### 7. Resultados finais
 
 Inicialmente foi feita uma estatística obtendo media, mediana, valor superior, inferior e Coeficiente de variação  da potencia geração para cada grupo do dataset, como mostrado na tabela 1. Com os valos, foi construído uma gráfico boxplot para uma melhor visualização da distribuição dos dados e seus valores discrepantes (outliers)  da potência medida em PU. Para análise estatística, foram removidos dados faltantes e medições inconsistentes como uma geração próxima de 0 em condições de céu limpo (figura 3), por exemplo.
 
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/Tabela2.PNG)
+![Tabela2](https://user-images.githubusercontent.com/60608757/212551540-f4079984-d0da-48a9-8604-a7b438740c7c.PNG)
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/boxplot.jpg)
+![boxplot](https://user-images.githubusercontent.com/60608757/212551520-36ab279d-6ca5-4339-badc-0ed0cbb69d89.jpg)
 
 Na sequência, foram escolhidas 5 novas imagem aleatórias para validar a rede treinada e comparar a medição da potência registrada da imagem com os valos presentes no gráfico Boxplot. E possível observar na tabela 2 que as 5 amostras foram classificadas corretamente, apenas as imagem de numero 1 e 2 ficaram com os valores de potencia fora da faixa de concentração do gráfico boxplot. Isso mostra que é possível realizar um estimativa, mesmo que não tão precisa, da geração a partir da classificação da imagem feita pela rede. 
 
-![alt text](https://github.com/leosonder/Trabalho-final-BI/blob/main/figuras/Tabela3.PNG)
+![Tabela3](https://user-images.githubusercontent.com/60608757/212551542-d95e3130-aa6e-4e37-894d-bcf621406cf6.PNG)
 
 ### 8. Conclusões
 
