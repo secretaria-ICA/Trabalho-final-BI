@@ -1,5 +1,5 @@
 <!-- antes de enviar a versão final, solicitamos que todos os comentários, colocados para orientação ao aluno, sejam removidos do arquivo -->
-# Estimativa de geração de energia fotovoltaica a partir da classificação de imagens celeste e Rede Neural Convolucional
+# Estimativa_de_Geracao_de_Energia_Fotovoltaica_a_partir_da_Classificacao_de_Imagens_Celeste_e_Rede_Neural_Convolucional
 
 #### Aluno: Leonardo Sondermann Christianes
 #### Orientadora: Evelyn Batista
